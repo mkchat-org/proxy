@@ -9,10 +9,10 @@
     },
     "dependencies": {
       "fastify": "^3.24.1",
-      "fastify-http-proxy": "^6.2.1"
+      "fastify-http-proxy": "^6.2.1",
+      "undici": "^4.14.1"
     },
     "engines": {
       "node": "14.x"
     }
-  }
-  
+}

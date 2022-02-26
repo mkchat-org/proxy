@@ -14,7 +14,7 @@ app.register(proxy, { upstream: "https://media.discordapp.net" });
 
 app.register(proxy, {
     upstream: "https://avatars.dicebear.com/",
-    prefix: "/avatars",
+    prefix: "/genericavatars",
     rewritePrefix: "/api/adventurer-neutral/"
 });
 

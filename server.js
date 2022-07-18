@@ -10,15 +10,15 @@ app.addHook("preHandler", (_req, reply, done) => {
     done();
 });
 
-app.register(proxy, { upstream: "https://media.discordapp.net" });
+app.register(proxy, { upstream: "https://media.discordapp.net", prefix: "discord" });
 
 app.register(proxy, {
     upstream: "https://avatars.dicebear.com/",
-    prefix: "/genericavatars",
+    prefix: "/dicebear/avatars",
     rewritePrefix: "/api/adventurer-neutral/"
 });
 
-app.get("/lottiesticker/:id", async (req, reply) => {
+app.get("/discord/lottiesticker/:id", async (req, reply) => {
     const id = req.params.id;
     const { body } = await request(`https://discord.com/stickers/${id}.json`);
     

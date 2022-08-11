@@ -42,7 +42,7 @@ app.all("/uploads/:hash", async (req, reply) => {
     };
 });
 
-app.listen({ port: config.PORT }, (err, addr) => { 
+app.listen({ port: config.PORT, host: config.HOST }, (err, addr) => { 
     if (err) throw err;
     console.log(`MKChat proxy server listening at: ${addr}`);
 });

@@ -29,7 +29,7 @@ app.get("/discord/lottiesticker/:id", async (req, reply) => {
     const id = req.params.id;
     const { body } = await request(`https://discord.com/stickers/${id}.json`);
     
-    reply.send(body);
+    reply.send(await body.json());
 });
 
 app.listen({ port: config.PORT, host: config.HOST }, (err, addr) => { 

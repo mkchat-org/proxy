@@ -33,6 +33,9 @@ app.get("/discord/lottiesticker/:id", async (req, reply) => {
 });
 
 app.listen({ port: config.PORT, host: config.HOST }, (err, addr) => { 
-    if (err) throw err;
-    console.log(`MKChat proxy server listening at: ${addr}`);
+    if (err) {
+        console.error(err);
+    } else {
+        console.log(`MKChat proxy server listening at: ${addr}`);
+    };
 });

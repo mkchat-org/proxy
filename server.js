@@ -1,4 +1,3 @@
-import crypto from "crypto";
 import { request } from "undici";
 import fastify from "fastify";
 import proxy from "@fastify/http-proxy";

@@ -19,10 +19,15 @@ app.register(proxy, {
 
 app.register(proxy, { upstream: "https://media.discordapp.net", prefix: "discord" });
 
+// app.register(proxy, {
+//     upstream: "https://avatars.dicebear.com/",
+//     prefix: "/dicebear/avatars",
+//     rewritePrefix: "/api/adventurer-neutral/"
+// });
+
 app.register(proxy, {
-    upstream: "https://avatars.dicebear.com/",
-    prefix: "/dicebear/avatars",
-    rewritePrefix: "/api/adventurer-neutral/"
+    upstream: "https://adorable-avatars.broken.services/",
+    prefix: "/dicebear/avatars"
 });
 
 app.get("/discord/lottiesticker/:id", async (req, reply) => {

@@ -35,8 +35,9 @@ app.get("/discord/lottiesticker/:id", async (req, reply) => {
 
 app.get("/seasonal/halloween/avatars/:key", async (req, reply) => {
     const { key } = req.params;
+    const username = key || " ";
 
-    const asciiCode = key.charAt(0).charCodeAt(0);
+    const asciiCode = username.charAt(0).charCodeAt(0);
     const num = asciiCode % 7; // (0xffffff * parseInt(asciiCode * 3)) & 7 - lol
 
     const avatars = await fs.readdir("./avatars/");

@@ -1,3 +1,4 @@
+import * as fs from "fs/promises";
 import { request } from "undici";
 import fastify from "fastify";
 import proxy from "@fastify/http-proxy";
@@ -26,10 +27,22 @@ app.register(proxy, {
 });
 
 app.get("/discord/lottiesticker/:id", async (req, reply) => {
-    const id = req.params.id;
+    const { id } = req.params;
     const { body } = await request(`https://discord.com/stickers/${id}.json`);
     
     reply.send(await body.json());
+});
+
+app.get("/seasonal/halloween/avatars/:key", async (req, reply) => {
+    const { key } = req.params;
+
+    const asciiCode = key.charAt(0).charCodeAt(0);
+    const num = asciiCode % 7; // (0xffffff * parseInt(asciiCode * 3)) & 7 - lol
+
+    const avatars = await fs.readdir("./avatars/");
+    const avatar = await fs.readFile(`./avatars/${avatars[num]}`);
+
+    reply.header("Content-Type", "image/png").send(avatar);
 });
 
 app.listen({ port: config.PORT, host: config.HOST }, (err, addr) => { 

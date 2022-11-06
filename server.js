@@ -38,9 +38,9 @@ app.get("/seasonal/halloween/avatars/:key", async (req, reply) => {
     const username = key || " ";
 
     const asciiCode = username.charAt(0).charCodeAt(0);
-    const num = asciiCode % 7; // (0xffffff * parseInt(asciiCode * 3)) & 7 - lol
-
     const avatars = await fs.readdir("./avatars/");
+    const num = asciiCode % avatars.length; // (0xffffff * parseInt(asciiCode * 3)) & 7 - lol
+
     const avatar = await fs.readFile(`./avatars/${avatars[num]}`);
 
     reply.header("Content-Type", "image/png").send(avatar);
@@ -53,5 +53,3 @@ app.listen({ port: config.PORT, host: config.HOST }, (err, addr) => {
         console.log(`MKChat proxy server listening at: ${addr}`);
     };
 });
-
-//

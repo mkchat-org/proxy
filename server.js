@@ -33,6 +33,7 @@ app.get("/discord/lottiesticker/:id", async (req, reply) => {
     reply.send(await body.json());
 });
 
+// todo: remove "halloween" from the path
 app.get("/seasonal/halloween/avatars/:key", async (req, reply) => {
     const { key } = req.params;
     const username = key || " ";

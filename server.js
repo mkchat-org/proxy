@@ -40,7 +40,7 @@ app.get("/seasonal/halloween/avatars/:key", async (req, reply) => {
 
     const asciiCode = username.charAt(0).charCodeAt(0);
     const avatars = await fs.readdir("./avatars/");
-    const num = asciiCode % avatars.length; // (0xffffff * parseInt(asciiCode * 3)) & 7 - lol
+    const num = asciiCode % avatars.length; // (0xffffff * parseInt(asciiCode * 3)) & avatars.length - lol
 
     const avatar = await fs.readFile(`./avatars/${avatars[num]}`);
 

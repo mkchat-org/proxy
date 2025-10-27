@@ -35,7 +35,7 @@ struct MKChatProxy {
                     httpClient,
                     baseURL: "https://api.dicebear.com/",
                     stripPrefix: "/external/dicebear-avatars",
-                    rewritePrefix: "/9.x",
+                    rewritePrefix: "/9.x"
                 )
             )
             .get(
@@ -49,7 +49,7 @@ struct MKChatProxy {
                     httpClient,
                     baseURL: "https://media1.tenor.com",
                     stripPrefix: "/external/tenor-media",
-                    rewritePrefix: "/m",
+                    rewritePrefix: "/m"
                 )
             )
             .get(
@@ -76,7 +76,7 @@ struct MKChatProxy {
             middleware: ProxyMiddleware(
                 httpClient,
                 baseURL: "https://media.discordapp.net",
-                stripPrefix: "/external/discord/",
+                stripPrefix: "/external/discord/"
             )
         )
         .get(
@@ -92,7 +92,7 @@ struct MKChatProxy {
             router: router,
             configuration: .init(
                 address: .hostname("0.0.0.0", port: port)
-            ),
+            )
         )
 
         try await app.runService()

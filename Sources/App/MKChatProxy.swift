@@ -57,6 +57,20 @@ struct MKChatProxy {
                 use: { request, context -> Response in
                     return Response(status: .ok)
                 })
+        external.group("/klipy")
+            .add(
+                middleware: ProxyMiddleware(
+                    httpClient,
+                    baseURL: "https://static.klipy.com",
+                    stripPrefix: "/external/klipy",
+                    rewritePrefix: "/ii"
+                )
+            )
+            .get(
+                "**",
+                use: { request, context -> Response in
+                    return Response(status: .ok)
+                })
 
         discord.group("/stickers")
             .add(
